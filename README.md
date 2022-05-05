@@ -52,7 +52,7 @@ One might also consider having a Tariff class, and inject an instance of the Tar
 1. Clone this directory
 2. Run bundle install to install the required dependencies
 3. Run RSpec within the root directory to run tests and see test coverage
-4. Manually feature test the program by loading the file into the irb:
+4. Manually feature test the program by loading the file into the irb e.g. :
 
 ```
 $ irb -r ./lib/booking_pricer.rb
@@ -71,3 +71,7 @@ I have made the following assumptions, which I would have clarified if given thi
 
 - The function should work out the cheapest possible rate combination i.e. 8 days would be the weekly tariff + daily tariff rather than 8* daily tariff or 2*weekly tariff.
 - Duration is always provided as an integer, in line with the pseudocode parameter: '(duration_minutes as Integer)'. Similarly, the return value should be an integer, i.e. no £ sign is needed in the output. (By having the output as an integer, it is likely to mean the function could be integrated more easily with other functions in the system)
+
+### Test coverage: 100%
+
+![test-coverage](./assets/images/test-coverage-100-screenshot.png)
