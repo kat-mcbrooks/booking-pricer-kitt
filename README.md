@@ -29,9 +29,9 @@ GetPrice(duration_minutes as Integer) returns price as Integer
 
 ### My Approach
 
-I opted to use a class for Booking and one function, get_price, that calculates the price. This is partly because I am working in Ruby, an OOP language, but also because I felt it would make the code more flexible and maintainable for future engineers.
+I opted to use a class for Booking and one function, get_price, that calculates the price. This is partly because I am working in Ruby, an OOP language, but also because I felt it would make the code more flexible and maintainable for future engineers. 
 
-Although currently we only have one tariff, by injecting the tariff on initialisation, the code allows flexibility for different tariffs to be used - if Kitt wanted to expand its system with multiple tariffs in the future.
+Although currently we only have one tariff, by injecting the tariff on initialisation, the code allows flexibility for different tariffs to be used - if Kitt wanted to expand its system with multiple tariffs in the future. (DI being one of the SOLID principles of OOP)
 
 One might also consider having a Tariff class, and inject an instance of the Tariff class into the Booking class on initialisation. I considered creating the Tariff class, but decided for the purpose of this task, it was sufficient to keep it as a constant.
 
