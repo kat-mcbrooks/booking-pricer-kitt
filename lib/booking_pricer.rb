@@ -17,6 +17,10 @@ class Booking
     whole_hours = hours_remaining / 60
     price_for_hours = [TARIFF[:daily], whole_hours*TARIFF[:hourly]].min
 
-    price = price_for_weeks + price_for_days + price_for_hours
+    # work out the number of mins that don't make up a complete hour
+    whole_mins = hours_remaining % 60
+    price_for_minutes = [TARIFF[:hourly], whole_mins*TARIFF[:per_minute]].min
+
+    price = price_for_weeks + price_for_days + price_for_hours + price_for_minutes 
   end
 end

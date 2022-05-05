@@ -32,6 +32,12 @@ describe Booking do
     it 'calculates price for 3 hours as daily rate' do
       expect(booking.get_price(180)).to eq tariff[:daily]
     end
+    it 'calculates price for 11 minutes' do
+      expect(booking.get_price(11)).to eq 11*tariff[:per_minute]
+    end
+    it 'calculates price for 12 minutes as the hourly rate' do
+      expect(booking.get_price(12)).to eq tariff[:hourly]
+    end
 
   end
 end
