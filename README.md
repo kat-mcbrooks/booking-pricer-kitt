@@ -34,7 +34,7 @@ I have made the following assumptions, which I would have clarified if given thi
 - The function should work out the cheapest possible rate combination i.e. 8 days would be the weekly tariff + daily tariff rather than 8* daily tariff or 2*weekly tariff. Please note that I have included these in the 'more complex example test cases'
 - Duration is always provided as an integer, in line with the pseudocode parameter: '(duration_minutes as Integer)'
 
-| Input                                 | Output                          |
+| Input                                 | Output                          |                     |
 | ------------------------------------- | ------------------------------- | ------------------- |
 | Meeting duration in minutes (integer) | Price of meeting room (integer) |
 | 1440                                  | 60                              | (24hr / 1 day)      |
@@ -45,7 +45,7 @@ I have made the following assumptions, which I would have clarified if given thi
 
 #### More complex example test cases i.e. when the cheapest rate is a combination of tariffs:
 
-| Input | Output |
+| Input | Output |          |
 | ----- | ------ | -------- |
 | 11520 | 165    | (8 days) |
 | 11520 | 165    | (8 days) |
