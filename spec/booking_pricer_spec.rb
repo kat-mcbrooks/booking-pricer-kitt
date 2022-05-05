@@ -11,6 +11,9 @@ describe Booking do
     it 'calculates price for 2 weeks' do
       expect(booking.get_price(20160)).to eq 2*tariff[:weekly]
     end
+    it 'calculates price for 9 days as 2 weeks' do 
+      expect(booking.get_price(12960)).to eq 2*tariff[:weekly]
+    end 
     it 'defaults to 0 if given no duration' do
       expect(booking.get_price()).to eq 0
     end
@@ -37,6 +40,18 @@ describe Booking do
     end
     it 'calculates price for 12 minutes as the hourly rate' do
       expect(booking.get_price(12)).to eq tariff[:hourly]
+    end
+    context '#when calculating combinations of rates' do 
+      it 'calculates price for 70 minutes as 1hr + 10 min tariff' do
+        expect(booking.get_price(70)).to eq tariff[:hourly] + 10*tariff[:per_minute]
+      end
+      it 'calculates price for 8 days' do 
+        expect(booking.get_price(11520)).to eq tariff[:weekly] + tariff[:daily]
+      end 
+      it 'calculates price for 26 hours as daily rate + 2 times hourly rate' do 
+        expect(booking.get_price(1560)).to eq tariff[:daily] + 2*tariff[:hourly]
+      end 
+
     end
 
   end
