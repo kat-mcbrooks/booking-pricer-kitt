@@ -51,7 +51,21 @@ describe Booking do
       it 'calculates price for 26 hours as daily rate + 2 times hourly rate' do 
         expect(booking.get_price(1560)).to eq tariff[:daily] + 2*tariff[:hourly]
       end 
+    end
 
+    context '#when given a different tariff' do 
+      tariff_1 = { 
+        per_minute: 2,
+        hourly: 22,
+        daily: 50, # this means 2 days more economical than 1 week 
+        weekly: 105 
+        }
+      subject(:booking_with_different_tariff) { described_class.new(tariff_1) }
+      
+      it 'calculates price for 2 days as 2 days on tariff_1 because thats cheaper than weekly tariff' do
+        p booking_with_different_tariff.get_price(2880)
+        expect(booking_with_different_tariff.get_price(2880)).to eq 2*tariff_1[:daily]
+      end
     end
 
   end
