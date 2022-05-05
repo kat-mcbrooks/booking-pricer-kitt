@@ -17,11 +17,21 @@ describe Booking do
     it 'calculates price for 1 day' do
       expect(booking.get_price(1440)).to eq tariff[:daily]
     end
-    it 'calculates price for 2 days' do
+    it 'calculates price for 2 days as the weekly rate' do
       expect(booking.get_price(2880)).to eq tariff[:weekly]
     end
-    it 'calculates price for 3 days' do
+    it 'calculates price for 3 days as the weekly rate' do
       expect(booking.get_price(4320)).to eq tariff[:weekly]
     end
+    it 'calculates price for 1 hour' do
+      expect(booking.get_price(60)).to eq tariff[:hourly]
+    end
+    it 'calculates price for 2 hours' do
+      expect(booking.get_price(120)).to eq 2*tariff[:hourly]
+    end
+    it 'calculates price for 3 hours as daily rate' do
+      expect(booking.get_price(180)).to eq tariff[:daily]
+    end
+
   end
 end

@@ -12,7 +12,11 @@ class Booking
     days_remaining = duration % 10080 
     whole_days = days_remaining / 1440 
     price_for_days = [TARIFF[:weekly], whole_days*TARIFF[:daily]].min
-  
-    price = price_for_weeks + price_for_days
+    # work out the number of hours that don't make up a complete day
+    hours_remaining = days_remaining % 1440 # total duration in mins for any value < 1440
+    whole_hours = hours_remaining / 60
+    price_for_hours = [TARIFF[:daily], whole_hours*TARIFF[:hourly]].min
+
+    price = price_for_weeks + price_for_days + price_for_hours
   end
 end
