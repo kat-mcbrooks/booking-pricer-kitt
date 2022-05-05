@@ -6,9 +6,13 @@ class Booking
   # if no duration is given, default to 0 minutes
   def get_price(duration = 0)
     # first work out the number of complete weeks:
-    num_weeks = duration / 10080 
-    price_for_weeks = num_weeks*TARIFF[:weekly]
+    whole_weeks = duration / 10080 
+    price_for_weeks = whole_weeks*TARIFF[:weekly]
+    # work out the number of days that don't make up a complete week
+    days_remaining = duration % 10080 
+    whole_days = days_remaining / 1440 
+    price_for_days = [TARIFF[:weekly], whole_days*TARIFF[:daily]].min
   
-    price = price_for_weeks 
+    price = price_for_weeks + price_for_days
   end
 end
