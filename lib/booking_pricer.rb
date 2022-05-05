@@ -1,3 +1,8 @@
+# minutes conversion:
+# 1 week == 10080 minutes
+# 1 day == 1440 minutes
+# 1 hour == 60 minutes 
+
 class Booking
   TARIFF = { per_minute: 2,
     hourly: 22,
@@ -5,19 +10,18 @@ class Booking
     weekly: 105 }
   # if no duration is given, default to 0 minutes
   def get_price(duration = 0)
-    # first work out the number of complete weeks:
+    # first work out the number of complete weeks
     whole_weeks = duration / 10080 
     price_for_weeks = whole_weeks*TARIFF[:weekly]
-    # work out the number of days that don't make up a complete week
+    # then work out the number of days that don't make up a complete week
     days_remaining = duration % 10080 
     whole_days = days_remaining / 1440 
     price_for_days = [TARIFF[:weekly], whole_days*TARIFF[:daily]].min
-    # work out the number of hours that don't make up a complete day
+    # then work out the number of hours that don't make up a complete day
     hours_remaining = days_remaining % 1440 # total duration in mins for any value < 1440
     whole_hours = hours_remaining / 60
     price_for_hours = [TARIFF[:daily], whole_hours*TARIFF[:hourly]].min
-
-    # work out the number of mins that don't make up a complete hour
+    # then work out the number of mins that don't make up a complete hour
     whole_mins = hours_remaining % 60
     price_for_minutes = [TARIFF[:hourly], whole_mins*TARIFF[:per_minute]].min
 
