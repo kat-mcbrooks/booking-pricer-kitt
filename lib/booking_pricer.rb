@@ -30,4 +30,5 @@ class Booking
 
     price = price_for_weeks + price_for_days + price_for_hours + price_for_minutes 
   end
+  
 end
